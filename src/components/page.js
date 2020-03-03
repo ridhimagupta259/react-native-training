@@ -20,7 +20,7 @@ class Page extends React.Component {
               alignSelf: 'flex-start',
               marginLeft: 20,
             }}>
-            Recharge
+            Recharge Options
           </Text>
         </View>
 
