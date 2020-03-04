@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 
 class Second extends React.Component {
   constructor(props) {
@@ -16,7 +22,13 @@ class Second extends React.Component {
   render() {
     // const {text, editable} = this.state;
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+          <Image
+            style={{width: 20, height: 20}}
+            source={require('../Assets/menu.png')}
+          />
+        </TouchableOpacity>
         {/* <Text>{text}</Text>
         <TextInput
           editable={editable}
@@ -28,7 +40,7 @@ class Second extends React.Component {
           }}
           onChangeText={text => this.onChangeText(text)}
         /> */}
-      </View>
+      </SafeAreaView>
     );
   }
   componentDidMount() {
@@ -44,8 +56,9 @@ class Second extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    margin: 10,
+    //justifyContent: 'center',
   },
 });
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {SafeAreaView, Text, StyleSheet, TextInput, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 class Home extends React.Component {
@@ -16,7 +16,13 @@ class Home extends React.Component {
   render() {
     const {navigation} = this.props;
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+          <Image
+            style={{width: 20, height: 20}}
+            source={require('../Assets/menu.png')}
+          />
+        </TouchableOpacity>
         <Text>{'user input: ' + this.state.text} </Text>
         <TextInput
           style={{
@@ -44,7 +50,7 @@ class Home extends React.Component {
           }}>
           <Text>Move to Next</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     );
   }
   componentDidMount() {
@@ -55,8 +61,9 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    margin: 10,
+   // justifyContent: 'center',
   },
 });
 
