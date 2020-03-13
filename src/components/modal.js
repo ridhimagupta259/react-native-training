@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Image,
-  SafeAreaView,
-  FlatList,
-  Button,
-} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Dimensions} from 'react-native';
 import Modal from 'react-native-modal';
@@ -24,85 +15,60 @@ class Home extends React.Component {
         {
           line1: 'Number 1',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
           line9: '#efbbcc',
         },
         {
           line1: 'Number 2',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#b19cd9',
         },
         {
           line1: 'Number 3',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#efbbcc',
         },
         {
           line1: 'Number 4',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#b19cd9',
         },
         {
           line1: 'Number 5',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#efbbcc',
         },
         {
           line1: 'Number 6',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#b19cd9',
         },
         {
           line1: 'Number 7',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#efbbcc',
         },
         {
           line1: 'Number 8',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#b19cd9',
         },
         {
           line1: 'Number 9',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#efbbcc',
         },
         {
           line1: 'Number 10',
           line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
-          line9: '#b19cd9',
-        },
-        {
-          line1: 'Number 11',
-          line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
-          line9: '#efbbcc',
-        },
-        {
-          line1: 'Number 12',
-          line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
-          line9: '#b19cd9',
-        },
-        {
-          line1: 'Number 13',
-          line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
-          line9: '#efbbcc',
-        },
-        {
-          line1: 'Number 14',
-          line2: 'Zylo Basic Health Checkup',
-          line3: '59 Tests included',
+
           line9: '#b19cd9',
         },
       ],
@@ -118,7 +84,7 @@ class Home extends React.Component {
     //const windowHeight = Dimensions.get('window').height;
     return (
       <SafeAreaView style={styles.container}>
-        {/* <FlatList
+        <FlatList
           showsVerticalScrollIndicator={false}
           data={offers}
           renderItem={({item}) => {
@@ -145,9 +111,9 @@ class Home extends React.Component {
               </TouchableOpacity>
             );
           }}
-          >/ */}
+        />
 
-        <View>
+        {/* <View style={{flex: 1}}>
           {offers.map(item => {
             return (
               <TouchableOpacity
@@ -172,7 +138,7 @@ class Home extends React.Component {
               </TouchableOpacity>
             );
           })}
-        </View>
+        </View> */}
         <Modal
           isVisible={this.state.isModalVisible}
           animationIn="slideInDown"
@@ -180,7 +146,7 @@ class Home extends React.Component {
           onBackdropPress={this.toggleModal}>
           <View
             style={{flex: 0.2, backgroundColor: '#fff', alignItems: 'center'}}>
-            <Text style={{fontSize: 30, marginBottom: 10}}>
+            <Text style={{fontSize: 20, marginBottom: 10}}>
               Item Number : {text}
             </Text>
             <Text style={{fontSize: 20, marginBottom: 40}}>
@@ -195,13 +161,13 @@ class Home extends React.Component {
               }}>
               <Text
                 style={{
-                  backgroundColor: '#a4a',
-                  fontSize: 30,
+                  backgroundColor: '#ffcce6',
+                  fontSize: 20,
                   padding: 7,
-                  borderRadius: 30,
+                  //borderRadius: 30,
                 }}>
                 {' '}
-                Proceed Next
+                Click to Proceed
               </Text>
             </TouchableOpacity>
           </View>
