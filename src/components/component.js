@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
 } from 'react-native';
+//import Modal from "react-native-modal";
 
 class Comp extends React.Component {
   constructor(props) {
