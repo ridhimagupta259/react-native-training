@@ -9,6 +9,7 @@ import {
   Alert,
   BackHandler,
   ToastAndroid,
+  Clipboard,
 } from 'react-native';
 
 class Home extends React.Component {
@@ -30,7 +31,7 @@ class Home extends React.Component {
         {
           text: 'Go To Second Page',
           onPress: () => {
-            navigation.navigate('Second');
+            Clipboard.setString(this.state.text), navigation.navigate('Second');
           },
         },
       ],
@@ -97,7 +98,6 @@ class Home extends React.Component {
         this.showAlert1();
       }
       return true;
-
     });
   }
 }

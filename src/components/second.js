@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  Clipboard,
+  Text,
 } from 'react-native';
 
 class Second extends React.Component {
@@ -13,23 +15,31 @@ class Second extends React.Component {
     this.state = {
       text: 'Hello Class',
       editable: true,
+      nextScreen: '',
     };
     // console.warn('Hello I am Constructor');
   }
   onChangeText(text) {
     console.warn(text);
   }
+  async getContent() {
+    const content = await Clipboard.getString();
+    this.setState({
+      nextScreen: content,
+    });
+  }
   render() {
     // const {text, editable} = this.state;
+    const {nextScreen} = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+        {/* <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
           <Image
             style={{width: 20, height: 20}}
             source={require('../Assets/menu.png')}
           />
         </TouchableOpacity>
-        {/* <Text>{text}</Text>
+        <Text>{text}</Text>
         <TextInput
           editable={editable}
           style={{
@@ -40,6 +50,13 @@ class Second extends React.Component {
           }}
           onChangeText={text => this.onChangeText(text)}
         /> */}
+        <TouchableOpacity
+          onPress={() => {
+            this.getContent();
+          }}>
+          <Text style={styles.textChild}> click to paste</Text>
+        </TouchableOpacity>
+        <Text style={styles.textChild}>{nextScreen}</Text>
       </SafeAreaView>
     );
   }
