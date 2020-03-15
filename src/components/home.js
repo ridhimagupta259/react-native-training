@@ -1,7 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, Text, StyleSheet, TextInput, Image} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  Alert,
+  BackHandler,
+  ToastAndroid,
+} from 'react-native';
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,21 +17,38 @@ class Home extends React.Component {
     this.state = {
       text: ' ',
       input: ' ',
+      newtext: 'xyz',
+      count: 0,
     };
   }
-  onChangeText(text) {}
+  showAlert1() {
+    const {navigation} = this.props;
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {
+          text: 'Go To Second Page',
+          onPress: () => {
+            navigation.navigate('Second');
+          },
+        },
+      ],
+      {cancelable: false},
+    );
+  }
 
   render() {
-    const {navigation} = this.props;
+    //const {navigation} = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+        {/* <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
           <Image
             style={{width: 20, height: 20}}
             source={require('../Assets/menu.png')}
           />
-        </TouchableOpacity>
-        <Text>{'user input: ' + this.state.text} </Text>
+        </TouchableOpacity> */}
+        <Text style={styles.text}>{'user input: ' + this.state.text} </Text>
         <TextInput
           style={{
             height: 50,
@@ -33,7 +58,7 @@ class Home extends React.Component {
           }}
           onChangeText={text => this.setState({text})}
         />
-        <Text>{'Password: ' + this.state.input}</Text>
+        <Text style={styles.text}>{'Password: ' + this.state.input}</Text>
         <TextInput
           style={{
             height: 50,
@@ -44,17 +69,36 @@ class Home extends React.Component {
           onChangeText={input => this.setState({input})}
         />
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             navigation.navigate('Second');
           }}>
-          <Text>Move to Next</Text>
-        </TouchableOpacity>
+          <Text style={styles.text}>Move to Next</Text>
+        </TouchableOpacity> */}
       </SafeAreaView>
     );
   }
+
   componentDidMount() {
-    console.warn('Hello I am ComponentDidMount');
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      this.setState({count: this.state.count + 1});
+      setTimeout(() => {
+        this.setState({count: 0});
+      }, 2000);
+
+      if (this.state.count === 1) {
+        ToastAndroid.showWithGravity(
+          this.state.newtext,
+          2000,
+          ToastAndroid.BOTTOM,
+        );
+      }
+      if (this.state.count === 2) {
+        this.showAlert1();
+      }
+      return true;
+
+    });
   }
 }
 
@@ -63,7 +107,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     margin: 10,
-   // justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    alignSelf: 'center',
   },
 });
 
